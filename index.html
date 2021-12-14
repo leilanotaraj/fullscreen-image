@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FullScreen Slider </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="wrap">
+        <div id="arrow-left" class="arrow"></div>
+        <div id="slider">
+          <div class="slide slide1">
+            <div class="slide-content">
+              <span>Image One</span>
+            </div>
+          </div>
+          <div class="slide slide2">
+            <div class="slide-content">
+              <span>Image Two</span>
+            </div>
+          </div>
+          <div class="slide slide3">
+            <div class="slide-content">
+              <span>Image Three</span>
+            </div>
+          </div>
+        </div>
+        <div id="arrow-right" class="arrow"></div>
+      </div>
+      <script>
+            let arrowLeft=document.querySelector('#arrow-left');
+            let arrowRight=document.querySelector('#arrow-right');
+           let sliderImages=document.querySelectorAll('.slide');
+            current=0
+           function reset(){
+              sliderImages.forEach(sliderImages=>sliderImages.style.display='none')
+            }
+       
+          function slideStart(){
+               reset();
+               sliderImages[0].style.display='block';
+
+           }
+            arrowLeft.addEventListener('click', slideLeft);
+            function slideLeft(){
+                if(current === 0){
+                    current=sliderImages.length;
+                }
+                 reset();
+                sliderImages[current -1].style.display='block';
+                current--;
+
+
+            }
+            arrowRight.addEventListener('click', slideRight);
+            function slideRight(){
+                if(current ===  sliderImages.length -1){
+                   current=-1;
+                }
+                reset();
+                sliderImages[current + 1].style.display='block';
+                current++;
+
+            } 
+            slideStart();
+      </script>
+</body>
+</html>
